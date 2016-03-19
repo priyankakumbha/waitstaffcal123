@@ -1,0 +1,50 @@
+<body  ng-controller="MyCtrl">
+  
+  <form name="myForm" ng-submit="addmeal()" role="Form" novalidate>
+  
+       
+ <div id="primary">
+
+    <h1>Enter the meal details</h1>
+    
+
+    
+<div class="form_inp" ng-class="{'has-error':  myForm.baseMealPrice.$invalid && (!myForm.baseMealPrice.$pristine || submitted)}">
+ <label for="base meal price">Base Meal Price: $</label>
+   <input name="baseMealPrice" type="number"  required  min="0.01" ng-model="data.price" placeholder="Base Meal Price" />
+    <p class="error-message"  ng-show="myForm.baseMealPrice.$invalid && (!myForm.baseMealPrice.$pristine || submitted)">Please enter meal price</p>
+                                </div>
+<div class="form_inp" ng-class="{'has-error':  myForm.taxRate.$invalid && (!myForm.taxRate.$pristine || submitted)}">
+<label for="tax rate">Tax Rate:%</label>
+   <input name="taxRate" type="number"  required min="1" max="100" ng-model="data.taxRate" placeholder="Tax Rate" />
+    <p class="error-message"  ng-show="myForm.taxRate.$invalid && (!myForm.taxRate.$pristine || submitted)">Please enter tax rate</p>
+                                </div>   
+<div class="form_inp" ng-class="{'has-error': myForm.tipPercentage.$invalid && (!myForm.tipPercentage.$pristine || submitted)}">
+<label for="tip percentage">Tip Percentage:%</label>
+   <input name="tipPercentage" type="number"  required min="1" max="100" ng-model="data.tipPercentage" placeholder="Tip percentage" />
+    <p class="error-message"  ng-show="myForm.tipPercentage.$invalid && (!myForm.tipPercentage.$pristine || submitted)">Please enter tip percentage</p>
+                                </div>
+  <button type="submit" class=" btn-primary" name="submitForm">Submit</button>
+  <button type="button" class=" btn-primary" ng-click="cancel()">Cancel</button> 
+     </div>                            
+        <div class="middle">
+        <h2>Customer charges</h2>
+
+<div class="form_inp" >
+<label for="subtotal">Subtotal:</label>
+<span>{{data.subtotal | currency}}</span></div>
+
+<div class="form_inp" >
+ <label for="tip">Tip:</label>
+ <span>{{data.tip | currency}}</span></div>
+
+<div class="form_inp" >
+ <label for="total">Total:</label>
+ <span>{{data.totalPrice | currency}}</span>
+ </div>
+ </div>
+ </form>
+
+
+
+
